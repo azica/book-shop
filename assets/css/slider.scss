@@ -1,0 +1,21 @@
+
+.slider {
+	.swiper-button-prev {
+		display: none;
+	}
+	.swiper-button-next {
+		filter: drop-shadow(0px 0px 0px rgba(13, 8, 66, 0.10)) drop-shadow(-0.8444444537162781px 0.8444444537162781px 1.6888889074325562px rgba(13, 8, 66, 0.10)) drop-shadow(-2.5333333015441895px 1.6888889074325562px 3.3777778148651123px rgba(13, 8, 66, 0.09)) drop-shadow(-5.911111354827881px 4.222222328186035px 4.222222328186035px rgba(13, 8, 66, 0.05)) drop-shadow(-10.133333206176758px 7.599999904632568px 5.066666603088379px rgba(13, 8, 66, 0.01)) drop-shadow(-16.044445037841797px 11.822222709655762px 5.911111354827881px rgba(13, 8, 66, 0.00));
+		width: 2.375rem;
+		height: 2.375rem;
+		border-radius: 100%;
+		background-color: #fff;
+		&:after {
+			color: #000;
+			font-size: 19px;
+			font-weight: 800;
+		}
+	}
+	.swiper-slide {
+		padding: 0.5rem;
+	}
+} 

@@ -1,0 +1,65 @@
+.bookDetail {
+	&__container {
+		display: flex;
+		padding-top: 2rem;
+	}
+	&__col:nth-child(1) {
+		flex: 0 0 40%;
+	}
+	&__col:nth-child(2) {
+		flex: 0 0 60%;
+	}
+	&__title {
+		margin-bottom: 0.5rem;
+	}
+	&__author {
+		color: $yellow;
+		margin-top: 0;
+		strong {
+			color: $dark-blue;
+			padding-right: 0.5rem;
+		}
+	}
+	&__ratings {
+		margin-bottom: 1rem;
+	}
+	&__details {
+		li {
+			font-weight: 600;
+			font-family: $nurito-font;
+			color: $dark-blue;
+			margin-bottom: 0.5rem;
+			span {
+				color: $grey;
+				font-size: 0.875rem;
+				font-weight: 400;
+				display: inline;
+				margin-left: 0.25rem;
+			}
+		}
+	}
+	&__flex {
+		display: flex;
+		align-items: center;
+		padding: 1rem 0;
+		border-top: 1px solid #6c6c6c36;
+		.btn {
+			margin-right: 1rem; 
+		}
+	}
+	&__quantity {
+		margin-right: 1rem;
+		
+		input {
+			border: 1px solid $grey;
+			border-radius: 0.5rem;
+			padding: 0.45rem 0.5rem;
+			background-color: #F6F6F6;
+			width: 3rem;
+			margin-left: 0.5rem;
+		}
+	}
+	&__shopping {
+
+	}
+}

@@ -1,0 +1,60 @@
+.hero {
+	&__inner {
+		display: flex!important;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+	&__title {
+		color: $dark-blue;
+		font-family: $main-font;
+		font-weight: 500;
+		font-size: 2.5rem;
+		line-height: 100%;
+		margin-bottom: 1.88rem;
+	}
+	&__text {
+		color: $dark-blue;
+		max-width: 28.3125rem;
+		margin-bottom: 2.5rem;
+	}
+	&__aside {
+		flex: 0 0 50%;
+		padding-right: 1rem;
+		@media (max-width: 767px) {
+			flex: 0 0 100%;
+			padding-right: 0;
+		}
+	}
+	&__image {
+		object-fit: cover;
+		// box-shadow: 0px 0px 0px 0px rgba(128, 0, 38, 0.10), 0px 3.335294008255005px 7.782351970672607px 0px rgba(128, 0, 38, 0.10), 0px 14.452940940856934px 14.452940940856934px 0px rgba(128, 0, 38, 0.09), 0px 32.241172790527344px 18.899999618530273px 0px rgba(128, 0, 38, 0.05), 0px 57.811763763427734px 23.347057342529297px 0px rgba(128, 0, 38, 0.01), 0px 90.05294036865234px 25.570587158203125px 0px rgba(128, 0, 38, 0.00);
+		// border-radius: 0.189rem;
+		width: 100%;
+		height: 100%;
+	}
+	&__slider {
+		flex: 0 0 50%;
+		overflow: hidden;
+		padding-top: 2rem;
+		@media (max-width: 767px) {
+			flex: 0 0 100%;
+		}
+	}
+	.swiper {
+		width: 100%;
+		padding-top: 50px;
+		padding-bottom: 50px;
+	  }
+	  .swiper-3d .swiper-slide-shadow-right,
+	  .swiper-3d .swiper-slide-shadow-left {
+		background: transparent;
+	  }
+	  .swiper-slide {
+		background-position: center;
+		background-size: contain;
+		width: 15rem;
+		height: 21rem;
+		overflow: hidden;
+	  }
+}

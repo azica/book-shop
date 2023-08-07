@@ -1,0 +1,32 @@
+.bookCategories {
+	border-bottom: 1px solid $dark-blue;
+	@media (max-width: 1020px) {
+		display: none;
+	}
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+	}
+	&__item {
+		padding: 0.5rem;
+		font-weight: 500;
+		font-family: $main-font;
+		font-size: 1.05rem;
+		line-height: 120%;
+		text-transform: capitalize;
+		color: $dark-blue;
+		margin: 0 0.5rem;
+		cursor: pointer;
+		transition: all 0.3s ease-in-out;
+		border-bottom: 2px solid transparent;
+		&:hover {
+			border-bottom: 2px solid $yellow;
+		}
+		&.active {
+			font-weight: 600;
+			border-bottom: 2px solid $yellow;
+		}
+	}
+}

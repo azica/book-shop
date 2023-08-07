@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Nunito+Sans:opsz,wght@6..12,300;6..12,500;6..12,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,500;6..12,600&display=swap');
+@import './variables.scss';
+@import './utils.scss';
+@import './header.scss';
+@import './footer.scss';
+@import './hero.scss';
+@import './slider.scss';
+@import './card.scss';
+@import './bookList.scss';
+@import './bookDetail.scss';
+@import './categories.scss';
+@import './cart.scss';
+@import './news.scss';
+
+body {
+	font-family: $main-font;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 120%;
+	background: #FFFFFE;
+}
+* {
+	text-decoration: none;
+	list-style: none;
+	outline: none;
+	box-sizing: border-box;
+}
+ul, li {
+	margin: 0;
+	padding: 0;
+}
+[class*=__container] {
+	max-width: 77rem;
+	margin: 0 auto;
+	@media (max-width: 1080px) {
+		padding: 0 15px;
+	}
+}
+[class*=__section] {
+	padding: 40px 0;
+}
+
+h2 {
+	color: $dark-blue;
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 120%;
+	margin: 0 0 1.25rem 0;
+}
