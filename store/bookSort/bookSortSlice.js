@@ -24,7 +24,7 @@ const BookSortSlice = createSlice({
 	}
 })
 
-// Reducers 
+// Selector 
 export const BookSortSelector = state => state.bookSort
 
 // Actions 
@@ -32,4 +32,5 @@ export const {
 	setColumnView,
 	setCurrentItemsPerPage} = BookSortSlice.actions
 
+// Reducer
 export default BookSortSlice.reducer

@@ -22,7 +22,6 @@ const BookCard = ({book}) => {
 			</div>
 			<div className="card__content">
 				<h6 className="card__title"><Link href={book?.link}>{book.title}</Link></h6>
-				{/* <p className="card__descr">{book.first_sentence}...</p> */}
 				<p className="card__author"><strong>by </strong>{book?.author}</p>
 				<div className="card__prices">
 					<span>$ 27.89</span>

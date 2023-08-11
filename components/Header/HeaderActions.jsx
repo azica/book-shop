@@ -14,9 +14,10 @@ const HeaderActions = ({setShowCart}) => {
 			<li className="actions__item"><User/></li>
 			<li className="actions__item"><Whishlist/></li>
 			<li className="actions__item">
-				<CartIcon 
-				onClick={()=>setShowCart(prev=>!prev)} 
-				totalQuantity={totalQuantity >  0 && totalQuantity} className="mobile"/>
+				<div className="cart__icon mobile" onClick={()=>setShowCart(prev=>!prev)}>
+					<CartIcon/>
+					<span>{totalQuantity >  0 && totalQuantity}</span>
+				</div>
 				<HeaderButtonWithCart text="Basket" 
 				onClick={()=>setShowCart(prev=>!prev)} 
 				totalQuantity={totalQuantity > 0 && totalQuantity}/>

@@ -56,5 +56,9 @@
 		width: 15rem;
 		height: 21rem;
 		overflow: hidden;
+		@media (max-width: 425px) {
+			width: 8rem;
+			height: 13rem;
+		}
 	  }
 }

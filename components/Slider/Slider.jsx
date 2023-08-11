@@ -26,7 +26,7 @@ const Slider = ({sliderTitle, sliderList }) => {
 							  spaceBetween: 40,
 							},
 							1024: {
-							  slidesPerView: 2,
+							  slidesPerView: 2.5,
 							  spaceBetween: 50,
 							},
 						  }}

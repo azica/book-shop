@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { fetchBooks, fetchOneBook } from './bookActions';
+import { fetchBooks, fetchOneBook, fetchFilterBooks } from './bookActions';
+
 
 const bookCategies = ["Fiction", "Florists", "Vendetta", "romance", "contemporary",
 "humorous", "trillers", "horror", 'nutrition']
@@ -34,6 +35,9 @@ export const BookSlice = createSlice({
 		[fetchOneBook.fulfilled]:(state, action)=>{
 				state.isLoading = false
 				state.book = action.payload	
+		},
+		[fetchFilterBooks.fulfilled]: (state, action)=> {
+			state.books = action.payload	
 		}
 	}
 })
@@ -42,5 +46,6 @@ export const BookSelector = (state)=>state.books
 
 // Actions 
 export const {setSortedBooks} = BookSlice.actions
-// Slice
+
+// Reducer
 export default BookSlice.reducer

@@ -37,6 +37,15 @@
 	.header__btn {
 		display: none;
 	}
+	.cart__icon {
+		position: relative;
+		span {
+			position: absolute;
+			top: -11px;
+			right: -10px;
+			color: $yellow;
+		}	
+	} 
 	@media (min-width: 767px) {
 		.mobile {
 			display: none;

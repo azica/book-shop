@@ -7,13 +7,19 @@
 	background:  #FFF;
 	transition: all .3s ease-in-out;
 	background-color: #fff;
-	
+	@media (max-width: 380px) {
+		padding: 0;
+	}
 	&__image {
 		margin-right: 2.5rem;
 		flex: 0 0 10rem;
 		height: 15.625rem;
 		border-radius: 0.625rem;
-		
+		@media (max-width: 380px) {
+			flex: 0 0 8rem;
+			height: auto;
+			margin-right: 0.5rem;
+		}
 		img {
 			object-fit: contain;
 			object-position: bottom;

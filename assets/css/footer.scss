@@ -1,11 +1,11 @@
 .footer {
 	height: 7rem;
-	margin-top: 3rem;
+	margin-top: 5rem;
 	&__container {
 		display: flex;
 		flex-wrap: wrap;
 		&:nth-child(1) {
-			padding-bottom: 8.25rem;
+			padding-bottom: 4rem;
 		}
 	}
 	&__logo {
@@ -85,9 +85,22 @@
 			font-size: 1rem;
 			font-style: normal;
 			font-weight: 700;
-			padding: 0.4375rem 3.0625rem;
+			padding: 0.5rem 3rem;
 			text-transform: capitalize;
 		}
+		@media (max-width: 425px) {
+			flex-direction: column;
+			input {
+				border-radius: 0.5rem;
+				margin-bottom: 0.5rem;
+				padding: 0.5rem;
+			}
+			button {
+				display: block;
+				width: 100%;
+				border-radius: 0.5rem;
+			}
+		} 
 	}
 	&__socials {
 		display: flex;

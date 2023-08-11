@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, memo } from 'react';
 import GridThree from '../../assets/images/icons/gridThree.svg';
 import GridList from '../../assets/images/icons/gridList.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { setColumnView, setCurrentItemsPerPage } from '../../store/bookSort/BookSortSlice';
+import { setColumnView, setCurrentItemsPerPage } from '../../store/bookSort/bookSortSlice';
 import { useState } from 'react';
 import {useSort} from '../../hooks/useSort'
 import { setSortedBooks } from '../../store/books/bookSlice';
@@ -10,8 +10,9 @@ import { setSortedBooks } from '../../store/books/bookSlice';
 const BookSort = () => {
 	const [sort, setSort] = useState('')
 	const dispatch = useDispatch()
-	const {columnView, numberOfItems, currentItemsPerPage} = useSelector(state=>state.bookSort)
-	const {books} = useSelector(state=>state.books)
+	const {columnView, numberOfItems, currentItemsPerPage} = useSelector(state=>state?.bookSort)
+	const {books} = useSelector(state=>state?.books)
+
 	const clickHandler =() => {
 		dispatch(setColumnView(!columnView))
 	}
@@ -25,7 +26,8 @@ const BookSort = () => {
 	}
 	useEffect(()=>{
 		dispatch(setSortedBooks(sortedBooks))
-	}, [sort])
+	}, [sort ])
+	
 	return (
 		<div className="bookSort">
 			<div className="bookSort__row">
@@ -70,4 +72,4 @@ const BookSort = () => {
 	);
 }
 
-export default BookSort;
+export default memo(BookSort);

@@ -21,7 +21,8 @@ export const TopSellersSlice = createSlice({
 	}
 })
 
-// Reducers 
-export const topSellerSelector = (state) => state.topSellers
+// Selector
+export const TopSellerSelector = (state) => state.topSellers
 
+// Reducer
 export default TopSellersSlice.reducer

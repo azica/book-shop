@@ -3,15 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchTopSellers } from '../store/topSelllers/topSellersAction';
 import Slider from '../components/Slider/Slider';
 import BookCard from '../components/BookCard/BookCard';
+import Loader from '../components/utils/Loader';
 
 const RecommendedSlider = () => {
 	const dispatch = useDispatch()
-	const { topSellers } = useSelector(state=>state.topSellers)
+	const { topSellers } = useSelector(state=>state?.topSellers)
 	useEffect(()=>{
 		dispatch(fetchTopSellers())
 	},[])
 
-	const bookArray = topSellers.map(book=>{
+	const bookArray = topSellers?.map(book=>{
 		const bookObj = {
 			id: book.key.split('/')[2],
 			title: book.title,
@@ -23,7 +24,11 @@ const RecommendedSlider = () => {
 	})
 	return (
 		<>
+		{	bookArray === undefined || bookArray.length < 0 ? 
+			<Loader/>
+		:
 			<Slider sliderTitle="Recommended for you " sliderList={[...bookArray]}/>
+		}
 		</>
 	);
 }

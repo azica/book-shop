@@ -2,12 +2,25 @@
 	&__container {
 		display: flex;
 		padding-top: 2rem;
+		flex-wrap: wrap;
+	}
+	&__image {
+		padding-right: 2rem;
+		@media (max-width: 580px) {
+			height: 22rem;
+			margin-bottom: 1rem;
+			img {
+				height: 100%;
+				object-fit: contain;
+			}
+		}
 	}
 	&__col:nth-child(1) {
 		flex: 0 0 40%;
 	}
 	&__col:nth-child(2) {
 		flex: 0 0 60%;
+		width: 60%;
 	}
 	&__title {
 		margin-bottom: 0.5rem;
@@ -41,10 +54,16 @@
 	&__flex {
 		display: flex;
 		align-items: center;
+		flex-wrap: wrap;
 		padding: 1rem 0;
 		border-top: 1px solid #6c6c6c36;
+		margin-bottom: 0.5rem;
 		.btn {
 			margin-right: 1rem; 
+			margin-bottom: 0.5rem;
+			@media (max-width: 580px) {
+				width: 100%;
+			}
 		}
 	}
 	&__quantity {
@@ -61,5 +80,11 @@
 	}
 	&__shopping {
 
+	}
+	@media (max-width: 580px) {
+		&__col {
+			flex: 0 0 100%!important;
+			width: 100%!important;
+		}
 	}
 }

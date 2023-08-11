@@ -6,6 +6,7 @@ import Head from 'next/head';
 import Star from '../../assets/images/icons/star.svg'
 import {ButtonWithCart, ButtonWhishlist} from '../../components/utils/Button'
 import { fetchOneBook } from '../../store/books/bookActions';
+import { addToCart } from '../../store/cart/cartSlice';
 
 const BookDetail = () => {
 	const {query} = useRouter()
@@ -15,7 +16,9 @@ const BookDetail = () => {
 	useEffect(()=>{
 		dispatch(fetchOneBook(query.title))
 	}, [query])
-
+	const clickHandler = (book) => {
+		dispatch(addToCart(book))
+	}
 	const changeHandler = ()=> {
 
 	}
@@ -59,7 +62,7 @@ const BookDetail = () => {
 						<div className="price">45.45 $</div>
 					</div>
 					<div className="bookDetail__flex">
-						<ButtonWithCart text="Add to cart"/>
+						<ButtonWithCart text="Add to cart" onClick={()=>clickHandler(book)}/>
 						<ButtonWhishlist text="Add to whishlist"/>
 					</div>
 				</div>
