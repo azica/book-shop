@@ -40,8 +40,8 @@ const BookSort = () => {
 						<select name="books" onChange={sortHandler} id="books" className="sort__select">
 							<option value="a-b">Title (A to Z)</option>
 							<option value="b-a">Title (Z to A)</option>
-							<option value="newest">Publication Date (newest)</option>
-							<option value="oldest">Publication Date (oldest)</option>
+							{/* <option value="newest">Publication Date (newest)</option>
+							<option value="oldest">Publication Date (oldest)</option> */}
 						</select>
 					</div>
 					<div className="sort">

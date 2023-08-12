@@ -15,9 +15,18 @@ export const TopSellersSlice = createSlice({
 
 	},
 	extraReducers: {
+		[fetchTopSellers.pending]:(state, action) => {
+			state.isLoading = true
+		},
 		[fetchTopSellers.fulfilled]:(state, action) => {
+			state.isLoading = false
 			state.topSellers = action.payload
-		}
+		},
+		[fetchTopSellers.rejected]:(state, action) => {
+			state.isLoading = false
+			state.errorMessage = action.payload
+		},
+
 	}
 })
 

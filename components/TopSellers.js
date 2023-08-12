@@ -21,7 +21,6 @@ const TopSellers = () => {
 		}
 		return <BookCard book ={bookObj}/>
 	})
-	console.log(bookArray)
 	return (
 		<>
 			{ bookArray == undefined || bookArray.length < 0 ? <Loader/>

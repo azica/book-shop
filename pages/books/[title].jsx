@@ -7,14 +7,17 @@ import Star from '../../assets/images/icons/star.svg'
 import {ButtonWithCart, ButtonWhishlist} from '../../components/utils/Button'
 import { fetchOneBook } from '../../store/books/bookActions';
 import { addToCart } from '../../store/cart/cartSlice';
-
+import Link from 'next/link';
+import ArrowLeft from '../../assets/images/icons/arrow-left.svg'
 const BookDetail = () => {
 	const {query} = useRouter()
 	const dispatch = useDispatch()
 	const {book} = useSelector(state=>state?.books)
 	const [number, setNumber] = useState(1)
 	useEffect(()=>{
-		dispatch(fetchOneBook(query.title))
+		if(query.title != '') {
+			dispatch(fetchOneBook(query.title))
+		}
 	}, [query])
 	const clickHandler = (book) => {
 		dispatch(addToCart(book))
@@ -32,6 +35,9 @@ const BookDetail = () => {
 			<Loader/>
 			:
 			<div className="bookDetail">
+				<div className="bookDetail-back__container">
+					<Link href="/book-list"> <ArrowLeft/>Back to Book List</Link>
+				</div>
 			<div className="bookDetail__container">
 				<div className="bookDetail__col">
 					<div className="bookDetail__image">
@@ -40,19 +46,18 @@ const BookDetail = () => {
 				</div>
 				<div className="bookDetail__col">
 					<h2 className="bookDetail__title">{book?.title}</h2>
-					<h5 className="bookDetail__author"><strong>By</strong>{book.author}</h5>
+					<h5 className="bookDetail__author"><strong>By</strong>{book?.author}</h5>
 					<div className="bookDetail__ratings">
 						<Star/><Star/><Star/><Star/><Star/>
 					</div>
 					<p className="">{book.description}</p> 
 					<ul className="bookDetail__details">
-						{/* <li>ISBN: <span>{book.isbn[0]}</span></li> */}
 						<li>Publish date: <span>{book.datePublished}</span></li>
 						<li> Subjects: 
 						{book?.subjects?.map(sub=><span key={sub}>{sub}</span>)}
 						</li>
 					</ul>
-					<div className="bookDetail__flex">
+					{/* <div className="bookDetail__flex">
 						<label className="bookDetail__quantity" htmlFor="quantity"> Quantity
 						<input 
 						onChange={changeHandler}
@@ -60,7 +65,7 @@ const BookDetail = () => {
 						type="number" 
 						value={number}/></label>
 						<div className="price">45.45 $</div>
-					</div>
+					</div> */}
 					<div className="bookDetail__flex">
 						<ButtonWithCart text="Add to cart" onClick={()=>clickHandler(book)}/>
 						<ButtonWhishlist text="Add to whishlist"/>

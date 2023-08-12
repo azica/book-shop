@@ -1,9 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { memo } from 'react';
+import { useSelector, useDispatch } from 'react-redux/';
+import { fetchBooks, fetchFilteredBooks } from '../../store/books/bookActions';
 
-const BookFilter = ({filter, setFilter}) => {
+const BookFilter = () => {
 	const [isActive, setIsActive] = useState('')
-	
+	const [filter, setFilter] = useState([])
+	const dispatch = useDispatch()
+	const {currentItemsPerPage} = useSelector(state=>state?.bookSort)
+
+
 	const clickHandler = (str) => {
 		setIsActive(str)
 	}
@@ -11,23 +17,38 @@ const BookFilter = ({filter, setFilter}) => {
 		setFilter([...filter, e.target.value])
 	}
 
+	useEffect(()=>{
+		if(filter.length !== 0) {
+			const filters = filter.length > 1 ? filter.join(',') : filter.join(' ')
+			dispatch(fetchFilteredBooks({filters, currentItemsPerPage}))
+		} else {
+			dispatch(fetchBooks(currentItemsPerPage))
+		}
+	}, [filter, currentItemsPerPage])
+
+
 	const filterClearHandler = (e) => {
 		let inputs = e.target.offsetParent.querySelectorAll('input')
-	
-		const filteredArray = inputs.map(input=>{
+		const filteredArray = [...inputs].map(input=>{
 			input.checked = false;
-			return filter.filter(el=>el==input.value)
+			return input.value
 		})
-		setFilter(filteredArray)
-		// setFilter([])
+		setFilter(filter.filter(val => !filteredArray.includes(val)))
 	}
+	const ClearAllFiltersHandler = () => {
+		document.querySelectorAll('input').forEach(input=>{
+			input.checked = false;
+		})
+		setFilter([])
+	}
+
 	return (
 		<div className="bookFilter ">
 			<div className={`filter__select filter ${isActive == "select" ? "active": ""}`} 
 			onClick={()=>clickHandler("select")}>
-				<h6 className="filter__title">Selected <span onClick={filterClearHandler}>Clear</span></h6>
+				<h6 className="filter__title">Selected <span onClick={ClearAllFiltersHandler}>Clear</span></h6>
 				<div className="filter__select-list">
-					<span></span>
+					{filter.map((el, idx)=><span key={idx}>{(idx==0 ? '' : ', ') + el}</span>)}
 				</div>
 			</div>
 			<div 
