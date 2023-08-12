@@ -39,16 +39,6 @@ export const BookSlice = createSlice({
 			state.isLoading = false
 			state.errorMessage = action.payload
 		},
-
-		// Fetch One Book
-		[fetchOneBook.pending]: (state)=>{
-			state.isLoading = true
-		},
-		[fetchOneBook.fulfilled]:(state, action)=>{
-				state.isLoading = false
-				state.book = action.payload	
-		},
-
 		// Fetch Filtered Books
 		[fetchFilteredBooks.pending]: (state, action)=> {
 			state.isLoading = true	
@@ -73,7 +63,16 @@ export const BookSlice = createSlice({
 		[fetchSearchedBooks.rejected]: (state, action)=> {
 			state.isLoading = false
 			state.errorMessage = action.payload	
-		}
+		},
+
+		// Fetch One Book
+		[fetchOneBook.pending]: (state)=>{
+			state.isLoading = true
+		},
+		[fetchOneBook.fulfilled]:(state, action)=>{
+				state.isLoading = false
+				state.book = action.payload	
+		},
 	}
 })
 // Selector

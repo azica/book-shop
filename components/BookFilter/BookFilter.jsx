@@ -22,7 +22,7 @@ const BookFilter = () => {
 			const filters = filter.length > 1 ? filter.join(',') : filter.join(' ')
 			dispatch(fetchFilteredBooks({filters, currentItemsPerPage}))
 		} else {
-			dispatch(fetchBooks(currentItemsPerPage))
+			// dispatch(fetchBooks(currentItemsPerPage))
 		}
 	}, [filter, currentItemsPerPage])
 

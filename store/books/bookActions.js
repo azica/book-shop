@@ -47,23 +47,21 @@ export const fetchOneBook = createAsyncThunk('books/fetchOneBook', async functio
 		return e.message
 	}
 })
-export const fetchFilteredBooks = createAsyncThunk('filter/fetchFilterBooks', async ({filters, currentItemsPerPage}) =>{ 
+export const fetchFilteredBooks = createAsyncThunk('filter/fetchFilteredBooks', async ({filters, currentItemsPerPage}) =>{ 
 	try {
+		console.log(filters)
 		const response = await axios.get(`${baseUrl}?subject=${filters}&limit=${currentItemsPerPage}`);
-		const bookArray = response.data.docs.map(book=> {
-			let auhorName =  book.author_name == undefined ? '' : book.author_name[0]
-			const bookObject = {
-				id: book.key.split('/')[2],
-				title: book.title,
-				imgUrl: `https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-M.jpg`,
-				author: auhorName,
-				link: `/books/${book.key.split('/')[2]}`
-			}
-			return bookObject
+		return response.data.docs.map(book=> {
+				let auhorName =  book.author_name == undefined ? '' : book.author_name[0]
+				const bookObject = {
+					id: book.key.split('/')[2],
+					title: book.title,
+					imgUrl: `https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-M.jpg`,
+					author: auhorName,
+					link: `/books/${book.key.split('/')[2]}`
+				}
+				return bookObject
 		})
-		
-		return bookArray.length == 0 ? [] : bookArray
-
 	} catch (e) {
 		return e.message
 	}
