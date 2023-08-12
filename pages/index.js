@@ -12,7 +12,7 @@ const Index = () => {
 		<Head>
 			<title>Book Shop</title>
 		</Head>
-			<BookCategories/>
+			{/* <BookCategories/> */}
 			<Hero/>
 			<TopSellers/>
 			<RecommendedSlider/>
