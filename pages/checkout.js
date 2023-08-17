@@ -1,29 +1,46 @@
-import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-
+import {Button} from '../components/utils/Button';
+import CartItem from '../components/Cart/CartItem';
 const Checkout = () => {
 	const {cart} = useSelector(state=>state?.cart)
+	const [totalSum, setTotalSum] = useState(0)
+	const [totalItems, setTotalItems]= useState(0)
+	const clickHandler = (e)=> {
+		e.preventDefault()
+	}
+	useEffect(()=>{
+		if(cart.length !== 0) {
+			const total = cart.reduce((acc,item)=>{
+				return acc +  (item.quantity*item.price)
+			},0)
+			setTotalSum(total)
+
+			const itemsTotal = cart.reduce((acc, item)=>{
+				return acc + item.quantity
+			},0)
+			setTotalItems(itemsTotal)
+		}
+	}, [cart, totalSum, totalItems])
 	return (
 		<div className="checkout__container">
 			<div className="checkout">
-			<h2>Your Cart</h2>
-			<ul className="cart__list">
-				{cart.map(item=><li key={item.id} className="cart__item">
-					<div className="cart__image">
-						<img src={item.imgUrl} alt={item.title}/>
-					</div>
-					<div className="cart__body">
-						<h5>{item.title}</h5>
-						<h6>by <span>{item.author}</span></h6>
-						<div className="cart__actions">
-							<span>{item.quantity}</span>
-							<span>X</span>
-							<span className="cart__price">{item.price}$</span>
-						</div>
-					</div>
-				</li>)}
-			</ul>
+			<h2>Your Cart { cart.length == 0 && 'is empty'}</h2>
+				{
+					cart.length !== 0 &&
+					<div className="checkout__inner">
+					<ul className="checkout__list">
+						{cart.map(item=><CartItem key={item.id} item={item}/>)}
+					</ul>
+					<ul className="checkout__order">
+						<li><h4>Your Order</h4></li>
+						<li>Items <span>{totalItems} pcs</span></li>
+						<li>Sub total <span>{totalSum.toFixed(2)}$</span></li>
+						<li>Total to pay <span>{totalSum.toFixed(2)}$</span></li>
+						<Button text="Checkout" onClick={clickHandler}/>
+					</ul>
+				</div>
+				}
 			</div>
 		</div>
 	);

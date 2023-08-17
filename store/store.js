@@ -3,12 +3,14 @@ import bookReducer from './books/bookSlice';
 import topSellersReducer from './topSelllers/topSellersSlice';
 import bookSortReducer from './bookSort/bookSortSlice';
 import cartReducer from './cart/cartSlice';
+import authReducer from './auth/authSlice';
 
 const rootReducer = combineReducers({
 	books: bookReducer,
 	topSellers: topSellersReducer,
 	bookSort: bookSortReducer,
-	cart: cartReducer
+	cart: cartReducer,
+	auth: authReducer
 })
 
 export const store = configureStore({

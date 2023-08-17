@@ -12,8 +12,7 @@ const Header = () => {
 	const [showCart, setShowCart] = useState(false)
 	const navRef = useRef()
 
-	useClickOutside(navRef, setIsActive)
-	
+	useClickOutside(navRef, setIsActive);
 
   return (
     <header className="header">

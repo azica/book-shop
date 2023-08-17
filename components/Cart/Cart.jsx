@@ -12,6 +12,7 @@ const Cart = ({setShowCart}) => {
 	 useClickOutside(cartRef, setShowCart)
 	const router = useRouter()
 	const {cart} = useSelector(state=>state?.cart)
+	const {isAuth} = useSelector(state=>state.auth)
 	const changeHandler = (e) =>{
 		setQuantity(e.target.value)
 	}
@@ -23,7 +24,12 @@ const Cart = ({setShowCart}) => {
 		return arr = arr + (el.quantity * el.price)
 	}, 0)
 	const clickHandler = ()=> {
-		router.push('/checkout')
+		if(isAuth){
+			router.push('/checkout')
+		} else {
+			router.push('/contact')
+		}
+		
 		setShowCart(false)
 	}
 	return (
@@ -46,7 +52,7 @@ const Cart = ({setShowCart}) => {
 					</div>
 				</li>)}
 			</ul>
-			<h4>Subtotal:  <strong>{setTotalPrice}$</strong></h4>
+			<h4>Subtotal:  <strong>{setTotalPrice.toFixed(2) }$</strong></h4>
 				<Button onClick={clickHandler} text="Continue To Checkout"/>
 			</>
 			}

@@ -6,12 +6,13 @@ import CartIcon from '../../assets/images/icons/cart.svg';
 
 const HeaderActions = ({setShowCart}) => {
 	const {cart} = useSelector(state=>state?.cart)
+	const {isAuth} = useSelector(state=>state.auth)
 	const totalQuantity = cart?.reduce((arr, el)=>{
 		return arr += el.quantity
 	},0)
 	return (
 		<ul className='header__actions actions'>
-			<li className="actions__item"><User/></li>
+			<li className={`actions__item ${isAuth? "active": ""}`}><User/></li>
 			<li className="actions__item"><Whishlist/></li>
 			<li className="actions__item">
 				<div className="cart__icon mobile" onClick={()=>setShowCart(prev=>!prev)}>

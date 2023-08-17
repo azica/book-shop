@@ -21,12 +21,17 @@
 	@media (max-width: 767px) {
 		margin: 0;
 	}
-	li {
+	&__item{
 		margin-left: 2rem;
 		display: inline-flex;
 		svg {
 			cursor: pointer;
 			stroke: $dark-blue;
+		}
+		&.active {
+			svg {
+				stroke: $yellow;
+			}
 		}
 		@media (max-width: 425px) {
 			&:nth-child(1), &:nth-child(2) {
@@ -34,6 +39,7 @@
 			}
 		}
 	} 
+
 	.header__btn {
 		display: none;
 	}

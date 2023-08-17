@@ -5,7 +5,6 @@ import Footer from '../components/Footer/Footer'
 import 'normalize.css'
 import '../assets/css/main.scss'
 
-
 export default function App({ Component, pageProps }) {
 	return <Provider store={store}>
 		<div className='wrapper'>

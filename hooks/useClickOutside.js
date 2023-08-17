@@ -4,7 +4,7 @@ export default function useClickOutside(ref, setClose) {
 	if(ref === undefined || ref == null) return false
 	useEffect(() => {
 		const handleClickOutside = (event) => {
-		  if (!ref.current.contains(event.target)) {
+		  if (!ref && ref.current.contains(event.target)) {
 			setClose(false)
 		  }
 		};

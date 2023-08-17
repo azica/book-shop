@@ -79,6 +79,9 @@
 			stroke: $yellow!important;
 		}
 	}
+	@media (max-width: 425px) {
+		width: 100%;
+	}
 }
 .header__btn {
 	svg {
